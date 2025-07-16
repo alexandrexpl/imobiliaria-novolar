@@ -1,4 +1,9 @@
 <?php include 'includes/header.php'; ?>
+<?php
+require_once 'admin/functions.php';
+
+$imoveis_aluguel = buscar($connect, 'imoveis', "tipo = 'aluguel'", "id DESC");
+?>
 
 <div class="page-banner aluguel-banner">
     <h1>Imóveis para Alugar</h1>
@@ -30,94 +35,22 @@
 
     <section class="property-listing">
         <div class="listing-grid">
+            <?php foreach ($imoveis_aluguel as $imovel) : ?>
 
-            <a href="detalhes-aluguel.php?id=9" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/apt-2dorm-a.png" alt="Imóvel para alugar">
-                    <div class="property-card-content">
-                        <h3>Apartamento 2 Dormitórios</h3>
-                        <p class="location">Igara, Canoas/RS</p>
-                        <p class="price">R$ 2.500 <span class="condominio">+ R$ 450 condomínio</span></p>
+                <a href="detalhes-aluguel.php?id=<?php echo $imovel['id']; ?>" class="property-card-link">
+                    <div class="property-card">
+                        <img src="images/uploads/<?php echo htmlspecialchars($imovel['imagem_1']); ?>" alt="<?php echo htmlspecialchars($imovel['titulo']); ?>">
+                        <div class="property-card-content">
+                            <h3><?php echo htmlspecialchars($imovel['titulo']); ?></h3>
+                            <p class="location"><?php echo htmlspecialchars($imovel['localizacao']); ?></p>
+                            <p class="price">R$ <?php echo number_format($imovel['preco'], 2, ',', '.'); ?>
+                                <span class="condominio">/mês</span>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
-            <a href="detalhes-aluguel.php?id=10" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/casa-patio-a.png" alt="Imóvel para alugar">
-                    <div class="property-card-content">
-                        <h3>Casa com Pátio</h3>
-                        <p class="location">Centro, Canoas/RS</p>
-                        <p class="price">R$ 3.200 <span class="condominio">IPTU incluso</span></p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-aluguel.php?id=11" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/apt-2dorm-a.png" alt="Imóvel para alugar">
-                    <div class="property-card-content">
-                        <h3>Apartamento 2 Dormitórios</h3>
-                        <p class="location">Igara, Canoas/RS</p>
-                        <p class="price">R$ 2.500 <span class="condominio">+ R$ 450 condomínio</span></p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-aluguel.php?id=12" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/casa-patio-a.png" alt="Imóvel para alugar">
-                    <div class="property-card-content">
-                        <h3>Casa com Pátio</h3>
-                        <p class="location">Centro, Canoas/RS</p>
-                        <p class="price">R$ 3.200 <span class="condominio">IPTU incluso</span></p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-aluguel.php?id=13" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/apt-2dorm-a.png" alt="Imóvel para alugar">
-                    <div class="property-card-content">
-                        <h3>Apartamento 2 Dormitórios</h3>
-                        <p class="location">Igara, Canoas/RS</p>
-                        <p class="price">R$ 2.500 <span class="condominio">+ R$ 450 condomínio</span></p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-aluguel.php?id=14" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/casa-patio-a.png" alt="Imóvel para alugar">
-                    <div class="property-card-content">
-                        <h3>Casa com Pátio</h3>
-                        <p class="location">Centro, Canoas/RS</p>
-                        <p class="price">R$ 3.200 <span class="condominio">IPTU incluso</span></p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-aluguel.php?id=15" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/apt-2dorm-a.png" alt="Imóvel para alugar">
-                    <div class="property-card-content">
-                        <h3>Apartamento 2 Dormitórios</h3>
-                        <p class="location">Igara, Canoas/RS</p>
-                        <p class="price">R$ 2.500 <span class="condominio">+ R$ 450 condomínio</span></p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-aluguel.php?id=16" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/casa-patio-a.png" alt="Imóvel para alugar">
-                    <div class="property-card-content">
-                        <h3>Casa com Pátio</h3>
-                        <p class="location">Centro, Canoas/RS</p>
-                        <p class="price">R$ 3.200 <span class="condominio">IPTU incluso</span></p>
-                    </div>
-                </div>
-            </a>
+            <?php endforeach; ?>
         </div>
     </section>
 </div>

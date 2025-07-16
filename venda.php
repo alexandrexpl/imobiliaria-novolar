@@ -1,4 +1,9 @@
 <?php include 'includes/header.php'; ?>
+<?php
+require_once 'admin/functions.php';
+
+$imoveis_venda = buscar($connect, 'imoveis', "tipo = 'venda'", "id DESC");
+?>
 
 <div class="page-banner">
     <h1>Imóveis à Venda</h1>
@@ -30,94 +35,20 @@
 
     <section class="property-listing">
         <div class="listing-grid">
-            
-            <a href="detalhes-venda.php?id=1" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/cobertura-luxo-v.png" alt="Imóvel à venda">
-                    <div class="property-card-content">
-                        <h3>Cobertura de Luxo</h3>
-                        <p class="location">Centro, Canoas/RS</p>
-                        <p class="price">R$ 2.600.000</p>
-                    </div>
-                </div>
-            </a>
+            <?php foreach ($imoveis_venda as $imovel) : ?>
 
-            <a href="detalhes-venda.php?id=2" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/apartamento-moderno-v.png" alt="Imóvel à venda">
-                    <div class="property-card-content">
-                        <h3>Apartamento Moderno</h3>
-                        <p class="location">Moinhos de Vento, Canoas/RS</p>
-                        <p class="price">R$ 1.050.000</p>
+                <a href="detalhes-venda.php?id=<?php echo $imovel['id']; ?>" class="property-card-link">
+                    <div class="property-card">
+                        <img src="images/uploads/<?php echo htmlspecialchars($imovel['imagem_1']); ?>" alt="<?php echo htmlspecialchars($imovel['titulo']); ?>">
+                        <div class="property-card-content">
+                            <h3><?php echo htmlspecialchars($imovel['titulo']); ?></h3>
+                            <p class="location"><?php echo htmlspecialchars($imovel['localizacao']); ?></p>
+                            <p class="price">R$ <?php echo number_format($imovel['preco'], 2, ',', '.'); ?></p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
-            <a href="detalhes-venda.php?id=3" class="property-card-link">
-                 <div class="property-card">
-                    <img src="images/apartamento-moderno-v.png" alt="Imóvel à venda">
-                    <div class="property-card-content">
-                        <h3>Apartamento Moderno</h3>
-                        <p class="location">Moinhos de Vento, Canoas/RS</p>
-                        <p class="price">R$ 1.050.000</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-venda.php?id=4" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/apartamento-moderno-v.png" alt="Imóvel à venda">
-                    <div class="property-card-content">
-                        <h3>Apartamento Moderno</h3>
-                        <p class="location">Moinhos de Vento, Canoas/RS</p>
-                        <p class="price">R$ 1.050.000</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-venda.php?id=5" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/cobertura-luxo-v.png" alt="Imóvel à venda">
-                    <div class="property-card-content">
-                        <h3>Cobertura de Luxo</h3>
-                        <p class="location">Centro, Canoas/RS</p>
-                        <p class="price">R$ 2.600.000</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-venda.php?id=6" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/apartamento-moderno-v.png" alt="Imóvel à venda">
-                    <div class="property-card-content">
-                        <h3>Apartamento Moderno</h3>
-                        <p class="location">Moinhos de Vento, Canoas/RS</p>
-                        <p class="price">R$ 1.050.000</p>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="detalhes-venda.php?id=7" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/apartamento-moderno-v.png" alt="Imóvel à venda">
-                    <div class="property-card-content">
-                        <h3>Apartamento Moderno</h3>
-                        <p class="location">Moinhos de Vento, Canoas/RS</p>
-                        <p class="price">R$ 1.050.000</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="detalhes-venda.php?id=8" class="property-card-link">
-                <div class="property-card">
-                    <img src="images/apartamento-moderno-v.png" alt="Imóvel à venda">
-                    <div class="property-card-content">
-                        <h3>Apartamento Moderno</h3>
-                        <p class="location">Moinhos de Vento, Canoas/RS</p>
-                        <p class="price">R$ 1.050.000</p>
-                    </div>
-                </div>
-            </a>
+            <?php endforeach; ?>
         </div>
     </section>
 </div>

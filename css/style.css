@@ -1,6 +1,5 @@
-/* =================================
-   GERAL E VARIÁVEIS
-   ================================= */
+/*GERAL E VARIÁVEIS*/
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 :root {
@@ -56,9 +55,13 @@ h3 {
   background-color: #e69500;
 }
 
-/* =================================
-   HEADER (CABEÇALHO)
-   ================================= */
+.property-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* HEADER (CABEÇALHO) */
+
 header {
   background-color: var(--bege-claro);
   padding: 10px 0;
@@ -113,9 +116,8 @@ header .nav-container {
   transform: scale(1.05);
 }
 
-/* =================================
-   FOOTER (RODAPÉ)
-   ================================= */
+/* FOOTER (RODAPÉ) */
+
 footer {
   background-color: var(--bege-claro);
   padding: 50px 0 20px 0;
@@ -124,6 +126,10 @@ footer {
 }
 
 .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -163,9 +169,8 @@ footer {
   color: var(--cinza-texto);
 }
 
-/* =================================
-   PÁGINA INICIAL (HOME)
-   ================================= */
+/* PÁGINA INICIAL (HOME) */
+
 .hero {
   background: url("../images/img-hero.png") no-repeat center center/cover;
   height: 60vh;
@@ -261,9 +266,8 @@ footer {
   color: var(--laranja);
 }
 
-/* =================================
-   PÁGINAS VENDA E ALUGUEL
-   ================================= */
+/* PÁGINAS VENDA E ALUGUEL */
+
 .page-banner {
   background-color: var(--laranja);
   padding: 40px 20px;
@@ -348,7 +352,6 @@ footer {
   margin-top: 5px;
 }
 
-/* Seções Exclusivas */
 .exclusive-section {
   margin-top: 60px;
   padding: 40px;
@@ -400,9 +403,8 @@ footer {
   list-style-position: inside;
 }
 
-/* =================================
-   PÁGINA SOBRE NÓS
-   ================================= */
+/* PÁGINA SOBRE NÓS */
+
 .about-section {
   display: flex;
   gap: 40px;
@@ -432,9 +434,8 @@ footer {
   margin-bottom: 15px;
 }
 
-/* =================================
-   PÁGINA DE CONTATO
-   ================================= */
+/* PÁGINA DE CONTATO */
+
 .contact-form {
   max-width: 700px;
   margin: 0 auto;
@@ -465,9 +466,8 @@ footer {
   resize: vertical;
 }
 
-/* =================================
-   PÁGINA DETALHES DO IMÓVEL
-   ================================= */
+/* PÁGINA DETALHES DO IMÓVEL */
+
 .property-details-layout {
   display: flex;
   flex-direction: column;
@@ -536,9 +536,8 @@ footer {
   padding-top: 20px;
 }
 
-/* =================================
-   RESPONSIVIDADE
-   ================================= */
+/* RESPONSIVIDADE */
+
 @media (max-width: 992px) {
   .listing-grid {
     grid-template-columns: 1fr;
